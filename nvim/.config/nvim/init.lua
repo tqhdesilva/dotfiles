@@ -77,5 +77,18 @@ require("lazy").setup({
   },
 })
 
--- 3. Set Colorscheme
+-- 3. Diagnostics
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+})
+
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false })
+  end,
+})
+
+-- 4. Set Colorscheme
 vim.cmd.colorscheme("catppuccin-mocha")
