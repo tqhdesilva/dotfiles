@@ -1,6 +1,3 @@
--- Exit insert mode
-vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
-
 -- Clear search highlights
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
