@@ -35,6 +35,16 @@ return {
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     vim.lsp.config("*", { capabilities = capabilities })
 
+    vim.lsp.config("pyright", {
+      before_init = function(_, config)
+        local venv = (config.root_dir or vim.fn.getcwd()) .. "/.venv/bin/python"
+        if vim.fn.filereadable(venv) == 1 then
+          config.settings = config.settings or {}
+          config.settings.python = config.settings.python or {}
+          config.settings.python.pythonPath = venv
+        end
+      end,
+    })
     vim.lsp.enable("pyright")
     vim.lsp.enable("ts_ls")
     vim.lsp.enable("lua_ls")
