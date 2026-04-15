@@ -23,13 +23,12 @@ return {
       end,
     })
 
-    -- Diagnostics: show float on hover, no inline virtual text
-    vim.diagnostic.config({ virtual_text = false, signs = true })
-    vim.api.nvim_create_autocmd("CursorHold", {
-      callback = function()
-        vim.diagnostic.open_float(nil, { focus = false })
-      end,
-    })
+    -- Diagnostics: inline virtual text, toggle with <leader>dd
+    vim.diagnostic.config({ virtual_text = true, signs = true })
+    vim.keymap.set("n", "<leader>dd", function()
+      local current = vim.diagnostic.config().virtual_text
+      vim.diagnostic.config({ virtual_text = not current })
+    end, { desc = "Toggle inline diagnostics" })
 
     -- Extend LSP capabilities with completion
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
