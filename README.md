@@ -31,3 +31,16 @@ Machine-specific config goes in `.local` files (gitignored). Tracked files sourc
 - `~/.zprofile.local` — login profile paths
 - `~/.taskrc.local` — `data.location` and `sync.local.server_dir`
 - Set `TASKNOTES_DIR` in `~/.zshrc.local` for taskopen
+
+
+## External Dependencies
+### Nvim
+- `tree-sitter-cli`
+- `fd`
+- `ripgrep`
+- `black`
+
+### Tasks
+- task
+- [taskopen](https://github.com/jschlatow/taskopen)
+
