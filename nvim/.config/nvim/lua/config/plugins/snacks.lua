@@ -19,6 +19,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+  pattern = "*.md",
+  callback = function(ev)
+    require("snacks.image.doc").attach(ev.buf)
+  end,
+})
+
 return {
   "folke/snacks.nvim",
   priority = 1000,
