@@ -2,7 +2,7 @@
 set -euo pipefail
 DOTFILES="$(cd "$(dirname "$0")" && pwd)"
 command -v stow >/dev/null || { echo "Install stow first: brew install stow"; exit 1; }
-for pkg in zsh git nvim tmux task; do
+for pkg in zsh git nvim tmux task kitty; do
     echo "Stowing $pkg..."
     stow -v -R -t "$HOME" -d "$DOTFILES" "$pkg"
 done

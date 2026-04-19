@@ -22,6 +22,7 @@ Each top-level directory is a stow package. Running `stow <pkg>` creates symlink
 | `tmux`  | `.tmux.conf` |
 | `task`  | `.taskrc`, `.taskopenrc` |
 | `git`   | `.config/git/ignore` |
+| `kitty` | `.config/kitty/kitty.conf` — Shift+Enter extended key sequence for Claude Code |
 
 ## Local overrides
 
