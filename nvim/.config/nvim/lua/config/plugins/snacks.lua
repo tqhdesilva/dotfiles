@@ -31,7 +31,6 @@ return {
 
     image = {
       enabled = true,
-      debug = { convert = true, request = false },
       doc = {
         inline = true,
         float = false,
