@@ -7,6 +7,12 @@ vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split horizontally" })
 vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Equalize splits" })
 vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
 
+-- Scratch markdown buffer (for live LaTeX rendering)
+vim.api.nvim_create_user_command("Scratch", function()
+  vim.cmd("enew")
+  vim.bo.filetype = "markdown"
+end, {})
+
 -- Tab management
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "New tab" })
 vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close tab" })

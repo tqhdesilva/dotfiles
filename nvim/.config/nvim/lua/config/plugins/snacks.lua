@@ -1,8 +1,13 @@
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown" },
-  callback = function()
+  callback = function(ev)
     vim.opt_local.conceallevel = 2
     vim.opt_local.concealcursor = ""
+    require("snacks.image").setup()
+    -- snacks' own FileType autocmd only registers during setup() above,
+    -- so the event has already passed for the current buffer.
+    -- Attach manually for this one; subsequent buffers go through snacks' autocmd.
+    require("snacks.image.doc").attach(ev.buf)
   end,
 })
 
@@ -26,6 +31,7 @@ return {
 
     image = {
       enabled = true,
+      debug = { convert = true, request = false },
       doc = {
         inline = true,
         float = false,
