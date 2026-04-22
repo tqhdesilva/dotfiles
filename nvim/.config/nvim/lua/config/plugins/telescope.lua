@@ -27,5 +27,6 @@ return {
       builtin.live_grep({ additional_args = { "--hidden", "--no-ignore" } })
     end, { desc = "Live grep (all)" })
     vim.keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Grep word under cursor" })
+    vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Keymaps" })
   end,
 }
