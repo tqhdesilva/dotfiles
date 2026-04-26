@@ -2,6 +2,7 @@ return {
     "stevearc/conform.nvim",
     event = "BufWritePre",
     cmd = "ConformInfo",
+    keys = { { "<leader>mp", desc = "Format file or selection" } },
     config = function()
         local conform = require("conform")
 
