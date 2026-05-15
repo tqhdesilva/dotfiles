@@ -3,4 +3,4 @@
 # Vim sessions etc.
 *.vim
 
-
+**/.safehouse

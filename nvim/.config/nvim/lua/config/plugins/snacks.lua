@@ -6,23 +6,46 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+local function setup_markdown_images(buf)
+  vim.opt_local.conceallevel = 2
+  vim.opt_local.concealcursor = ""
+
+  require("snacks.image").setup()
+
+  if vim.env.TMUX then
+    local terminal = require("snacks.image.terminal")
+    if not terminal._terminal then
+      pcall(vim.fn.system, { "tmux", "set", "-p", "allow-passthrough", "all" })
+      terminal.transform = function(data)
+        return ("\027Ptmux;" .. data:gsub("\027", "\027\027")) .. "\027\\"
+      end
+
+      local ok, out = pcall(vim.fn.system, { "tmux", "display-message", "-p", "#{client_termname}" })
+      terminal._terminal = {
+        terminal = ok and vim.trim(out):gsub("^xterm%-", "") or "kitty",
+        version = "tmux",
+      }
+      terminal._env = nil
+    end
+  end
+
+  -- snacks' own FileType autocmd only registers during setup() above,
+  -- so the event has already passed for the current buffer.
+  -- Attach manually for this one; subsequent buffers go through snacks' autocmd.
+  require("snacks.image.doc").attach(buf)
+end
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown" },
   callback = function(ev)
-    vim.opt_local.conceallevel = 2
-    vim.opt_local.concealcursor = ""
-    require("snacks.image").setup()
-    -- snacks' own FileType autocmd only registers during setup() above,
-    -- so the event has already passed for the current buffer.
-    -- Attach manually for this one; subsequent buffers go through snacks' autocmd.
-    require("snacks.image.doc").attach(ev.buf)
+    setup_markdown_images(ev.buf)
   end,
 })
 
 vim.api.nvim_create_autocmd("FileChangedShellPost", {
   pattern = "*.md",
   callback = function(ev)
-    require("snacks.image.doc").attach(ev.buf)
+    setup_markdown_images(ev.buf)
   end,
 })
 
@@ -47,6 +70,7 @@ return {
     image = {
       enabled = true,
       doc = {
+        enabled = true,
         inline = true,
         float = false,
       },
