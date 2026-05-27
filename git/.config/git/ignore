@@ -4,3 +4,7 @@
 *.vim
 
 **/.safehouse
+
+.pi-loop.json.lock
+
+.notes
