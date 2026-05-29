@@ -1,0 +1,29 @@
+{
+  "lastChangelogVersion": "0.77.0",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "xhigh",
+  "packages": [
+    "npm:pi-smart-fetch",
+    "npm:pi-vim",
+    "npm:pi-mcp-adapter",
+    "npm:@tintinweb/pi-subagents",
+    "npm:@vanillagreen/pi-background-tasks",
+    "npm:@juicesharp/rpiv-ask-user-question",
+    "npm:@juicesharp/rpiv-btw",
+    "npm:@pi-agents/loop",
+    "npm:pi-markdown-preview",
+    "git:github.com/aporcelli/pi-usage",
+    "git:github.com/tqhdesilva/pi-effort",
+    "git:github.com/tqhdesilva/pi-annotator",
+    "git:github.com/tqhdesilva/pi-chatgpt-import",
+    "npm:pi-web-access"
+  ],
+  "hideThinkingBlock": true,
+  "enabledModels": [
+    "openai-codex/gpt-5.5",
+    "openai-codex/gpt-5.4-mini",
+    "openrouter/z-ai/glm-5",
+    "openrouter/~moonshotai/kimi-latest"
+  ]
+}

@@ -11,6 +11,8 @@ cd ~/repos/dotfiles
 ./install.sh
 ```
 
+`install.sh` backs up unmanaged Pi targets to `~/dotfiles-backup-YYYYMMDD-HHMMSS/` before stowing them.
+
 ## Structure
 
 Each top-level directory is a stow package. Running `stow <pkg>` creates symlinks from `~/` into the repo.
@@ -22,26 +24,32 @@ Each top-level directory is a stow package. Running `stow <pkg>` creates symlink
 | `tmux`  | `.tmux.conf` |
 | `task`  | `.taskrc`, `.taskopenrc` |
 | `git`   | `.config/git/ignore` |
-| `kitty` | `.config/kitty/kitty.conf` — Shift+Enter extended key sequence for Claude Code |
+| `kitty` | `.config/kitty/kitty.conf`, Shift+Enter extended key sequence for Claude Code |
+| `pi`    | `AGENTS.md`, `.pi/agent/settings.json` |
 
 ## Local overrides
 
 Machine-specific config goes in `.local` files (gitignored). Tracked files source them automatically:
 
-- `~/.zshrc.local` — shell aliases, paths, safehouse functions
-- `~/.zprofile.local` — login profile paths
-- `~/.taskrc.local` — `data.location` and `sync.local.server_dir`
+- `~/.zshrc.local`: shell aliases, paths, safehouse functions
+- `~/.zprofile.local`: login profile paths
+- `~/.taskrc.local`: `data.location` and `sync.local.server_dir`
 - Set `TASKNOTES_DIR` in `~/.zshrc.local` for taskopen
 
-
 ## External Dependencies
+
 ### Nvim
+
 - `tree-sitter-cli`
 - `fd`
 - `ripgrep`
 - `black`
 
 ### Tasks
+
 - task
 - [taskopen](https://github.com/jschlatow/taskopen)
 
+### Pi
+
+- Pi agent CLI
