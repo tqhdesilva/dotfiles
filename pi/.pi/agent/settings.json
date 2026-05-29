@@ -24,6 +24,9 @@
     "openai-codex/gpt-5.5",
     "openai-codex/gpt-5.4-mini",
     "openrouter/z-ai/glm-5",
-    "openrouter/~moonshotai/kimi-latest"
+    "openrouter/~moonshotai/kimi-latest",
+    "openrouter/moonshotai/kimi-k2",
+    "openrouter/qwen/qwen3-coder",
+    "openrouter/qwen/qwen3-coder-plus"
   ]
 }
