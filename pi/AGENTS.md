@@ -33,6 +33,8 @@ Don't take any credit, or mention the commit is co-authored by Codex.
 
 Be brief.
 
+Generally, you shouldn't exceed 300 words per response, unless you need to explain a complex topic in depth.
+
 Always write math equations as LaTeX inlined into markdown (i.e. use `$` delimiters).
 Examples:
 Inline: $\int_{t = 0}^\infty x dx$
