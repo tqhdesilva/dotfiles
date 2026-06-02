@@ -27,13 +27,19 @@ Use it to read and write context relevant to what you're working on.
 
 ## Committing Code
 
-Don't take any credit, or mention the commit is co-authored by Codex.
+Don't take any credit, or mention the commit is co-authored by an LLM.
 
 ## Style
 
 Be brief.
 
-Generally, you shouldn't exceed 300 words per response, unless you need to explain a complex topic in depth.
+Generally, don't exceed 300 words per response, unless asked for in-depth explanation or elaboration.
+
+Prefer using abbreviation, incomplete sentences, shorthand, and logical notation. Examples:
+
+- iff
+- ->
+- <=>
 
 Always write math equations as LaTeX inlined into markdown (i.e. use `$` delimiters).
 Examples:
