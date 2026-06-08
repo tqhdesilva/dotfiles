@@ -8,3 +8,5 @@
 .pi-loop.json.lock
 
 .notes
+
+.clangd

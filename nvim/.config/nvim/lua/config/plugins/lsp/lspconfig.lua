@@ -30,6 +30,38 @@ return {
       vim.diagnostic.config({ virtual_text = not current })
     end, { desc = "Toggle inline diagnostics" })
 
+    vim.api.nvim_create_user_command("LspRestart", function(opts)
+      local name = opts.args ~= "" and opts.args or nil
+      local clients = vim.lsp.get_clients({ bufnr = name and nil or 0, name = name })
+
+      if #clients == 0 then
+        vim.notify("No active LSP clients found", vim.log.levels.WARN)
+        return
+      end
+
+      local client_names = {}
+      for _, client in ipairs(clients) do
+        client_names[client.name] = true
+      end
+
+      for client_name in pairs(client_names) do
+        vim.lsp.enable(client_name, false)
+      end
+
+      vim.defer_fn(function()
+        for client_name in pairs(client_names) do
+          vim.lsp.enable(client_name, true)
+        end
+      end, 100)
+    end, {
+      nargs = "?",
+      complete = function()
+        return vim.tbl_map(function(client)
+          return client.name
+        end, vim.lsp.get_clients())
+      end,
+    })
+
     -- Extend LSP capabilities with completion
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     vim.lsp.config("*", { capabilities = capabilities })
